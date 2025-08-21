@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Home() {
 
-  const flashcards = [{quesiton: "Q1", answer: "A1"},{quesiton: "Q2", answer: "A2"},{quesiton: "Q3", answer: "A3"},{quesiton: "Q4", answer: "A4"},{quesiton: "Q5", answer: "A5"},]
+  const flashcards = [{quesiton: "What is JavaScript?", answer: "JavaScript is a programming language used to make web pages interactive. It runs in the browser and can also be used on the server (with Node.js)."},{quesiton: "Is JavaScript the same as Java?", answer: "No. JavaScript is a scripting language mainly for web development, while Java is a general-purpose programming language."},{quesiton: "What are the main data types in JavaScript?", answer: "String, Number, Boolean, Null, Undefined, Symbol, and BigInt."},{quesiton: "What is the difference between null and undefined?", answer: "null represents an intentional absence of value, while undefined means a variable has been declared but not assigned a value."},{quesiton: "What is the difference between == and ===", answer: "== checks only values, while === checks both values and data types (strict equality)."},]
   const [showAnswer , setShowAnswer] = useState(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   function handlePrevious(): void {
@@ -14,7 +14,7 @@ export default function Home() {
     }
   }
   function handleNext(): void {
-    if(currentIndex >=0){
+    if(currentIndex <=5 ){
       setCurrentIndex(currentIndex + 1);
       setShowAnswer(false);
     }
@@ -37,12 +37,12 @@ export default function Home() {
               <div className="h-10 w-50 bg-gray-400 m-1 rounded-xl"></div>
               <div className="ml-3"><p>25%</p></div>
             </div>
-            <div className="font-bold">5 of 20</div>
+            <div className="font-bold">{currentIndex+1} of 5</div>
           </div>
           <div className="border border-gray-500 rounded-xl mt-3 p-2 ">
             <div>
               <div className="flex items-center justify-center h-90 bg-gray-100 rounded-2xl">
-                <div className="text-3xl w-70 font-bold ">{showAnswer ? flashcards[currentIndex].answer : flashcards[currentIndex].quesiton}</div>
+                <div className="text-3xl w-90 font-bold ">{showAnswer ? flashcards[currentIndex].answer : flashcards[currentIndex].quesiton}</div>
               </div>
               <div>
                 <div className="flex items-center  h-12 bg-gray-100 rounded-2xl mt-2">
